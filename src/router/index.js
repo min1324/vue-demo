@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import store from '@/store';
 import userRoutes from './module/userRouter';
 import Home from '../views/Home.vue';
+import utilRoutes from './module/util';
 
 Vue.use(VueRouter);
 
@@ -13,6 +14,7 @@ const routes = [
     component: Home,
   },
   ...userRoutes,
+  ...utilRoutes,
 ];
 
 const router = new VueRouter({

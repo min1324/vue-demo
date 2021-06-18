@@ -1,9 +1,6 @@
 <template>
   <v-container>
-    <v-row
-      no-gutters
-      :align="align"
-    >
+    <v-row no-gutters>
       <v-col
         md="6"
         offset-md="3"
@@ -27,7 +24,7 @@
           <v-card>
             <v-img
               :src="card.src"
-              class="white--text align-end"
+              class="white--text"
               gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
             >
               <v-card-title v-text="card.title"></v-card-title>

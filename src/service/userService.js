@@ -1,10 +1,12 @@
-import http from '@/plugins/http';
+import http from '../plugins/http';
 
 // 用户注册
 const register = ({ name, phone, password }) => http.post('auth/register', { name, phone, password });
 
 // 用户登录
-const login = ({ phone, password }) => http.post('auth/login', { phone, password });
+const login = ({ phone, password }) => {
+  return http.post('auth/login', { phone, password });
+};
 
 // 获取用户信息
 const info = () => http.get('auth/info');

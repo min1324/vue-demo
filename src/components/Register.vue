@@ -2,7 +2,7 @@
   <v-container>
 
     <v-card
-      class="mx-auto py-6 my-10 "
+      class="mx-auto py-6 my-8 "
       max-width="500"
     >
       <v-card-title>
