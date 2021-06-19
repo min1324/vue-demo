@@ -139,12 +139,13 @@ export default {
       if (this.$v.$anyError) {
         return;
       }
-      this.userRegister(this.user).then(() => {
-        console.debug('register success.');
+      this.userRegister(this.user).then((res) => {
+        this.snackbar.text = res.data.data.msg;
+        this.snackbar.show = true;
         this.$router.replace({ name: 'Home' });
       }).catch((err) => {
         console.log(err);
-        this.snackbar.text = '用户已存在！';
+        this.snackbar.text = err.data.data.msg;
         this.snackbar.show = true;
       });
     },
