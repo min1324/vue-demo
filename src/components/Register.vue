@@ -144,8 +144,10 @@ export default {
         this.snackbar.show = true;
         this.$router.replace({ name: 'Home' });
       }).catch((err) => {
-        console.log(err);
-        this.snackbar.text = err.data.data.msg;
+        this.snackbar.text = '注册失败';
+        if (err.response) {
+          this.snackbar.text = err.response.data.msg;
+        }
         this.snackbar.show = true;
       });
     },

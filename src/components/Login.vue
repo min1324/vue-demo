@@ -116,12 +116,13 @@ export default {
         return;
       }
       this.userLogin(this.user).then(() => {
-        console.debug('login success.');
         this.$router.replace({ name: 'Home' });
       }).catch((err) => {
-        console.log(err);
+        this.snackbar.text = '登陆失败!';
+        if (err.response) {
+          this.snackbar.text = err.data.data.msg;
+        }
         this.snackbar.show = true;
-        this.snackbar.text = '密码错误!';
       });
     },
     clear() {

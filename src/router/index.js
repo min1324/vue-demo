@@ -2,8 +2,8 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import store from '@/store';
 import userRoutes from './module/userRouter';
+import utilRoutes from './module/fileRouter';
 import Home from '../views/Home.vue';
-import utilRoutes from './module/util';
 
 Vue.use(VueRouter);
 
