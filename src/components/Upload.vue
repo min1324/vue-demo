@@ -4,6 +4,22 @@
       cols="8"
       offset="2"
     >
+      <v-snackbar
+        v-model="snackbar.show"
+        :timeout="snackbar.timeout"
+        top
+      >
+        {{ snackbar.text }}
+
+        <template v-slot:action="{ attrs }">
+          <v-btn
+            color="blue"
+            text
+            v-bind="attrs"
+            @click="snackbar.show = false"
+          >close</v-btn>
+        </template>
+      </v-snackbar>
       <v-form>
         <v-file-input
           class="mx-10 mt-6"
@@ -54,6 +70,11 @@ export default {
       uploadIsLoading: false,
       uploadDialog: false,
     },
+    snackbar: {
+      show: false,
+      text: '',
+      timeout: 2000,
+    },
   }),
   methods: {
     upload() {
@@ -63,8 +84,15 @@ export default {
         formdata.append('files', file);
       });
       UploadFile(formdata).then(() => {
+        this.snackbar.text = '上传成功';
+        this.snackbar.show = true;
+        this.files = [];
       }).catch((err) => {
-        console.debug(err);
+        this.snackbar.text = '上传失败';
+        if (err.response) {
+          this.snackbar.text = err.data.data.msg;
+        }
+        this.snackbar.show = true;
       });
     },
   },
